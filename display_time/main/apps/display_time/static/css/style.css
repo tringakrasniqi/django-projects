@@ -1,0 +1,7 @@
+.time,
+.title {
+      margin: 10px auto;
+      border: 2px solid salmon;
+      width: 50%;
+      padding: 10px;
+}

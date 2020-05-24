@@ -5,13 +5,14 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
       {% load static %}
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">  
 </head>
 <body>
       <div class="title">
             The current time and date:
       </div>
       <div class="time">
-            
+            {{ time }}
       </div>
 </body>
 </html>
