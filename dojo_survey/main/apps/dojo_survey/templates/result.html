@@ -11,10 +11,12 @@
 <body>
       <div class="container">
             <h3>Submitted Info</h3>
-            <p><label>Name:</label> {{name}}</p>
-            <p><label>Dojo location:</label>  {{location}} </p>
-            <p><label>Favourite language:</label>  {{language}}</p>
-            <p><label>Comment:</label> {{comment}}</p>
+            <p><label>Name:</label> {{request.session.name}}</p>
+            <p><label>Dojo location:</label>  {{request.session.location}} </p>
+            <p><label>Favourite language:</label>  {{request.session.language}}</p>
+            {% if request.session.comment %}
+                  <p><label>Comment:</label> {{request.session.comment}}</p>
+            {% endif %}
             <a class="btn btn-primary" href="/">Go back</a>
       </div>
       
