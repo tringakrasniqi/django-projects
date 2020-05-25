@@ -4,15 +4,19 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Result</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       {% load static %}
       <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
       <div class="container">
-            <p>Name: {{name}}</p>
-            <p>Dojo Location: {{location}} </p>
-            <p>Favourite Language {{language}}</p>
-            <p>Comment: {{comment}}</p>
+            <h3>Submitted Info</h3>
+            <p><label>Name:</label> {{name}}</p>
+            <p><label>Dojo location:</label>  {{location}} </p>
+            <p><label>Favourite language:</label>  {{language}}</p>
+            <p><label>Comment:</label> {{comment}}</p>
+            <a class="btn btn-primary" href="/">Go back</a>
       </div>
+      
 </body>
 </html>

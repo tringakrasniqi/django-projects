@@ -1,0 +1,28 @@
+.container {
+      margin: 10px auto;
+      padding: 20px;
+      border-radius: 5px;
+      border: 1px solid gray;
+      width: 500px;
+}
+
+form button {
+      display: block;
+      margin: auto;
+}
+
+a{
+      border: 1px solid black;
+      padding: 5px;
+      background-color: gray;
+      text-decoration: none;
+      color: #ffffff;
+}
+
+h3 {
+      text-decoration: underline;
+}
+
+label {
+      width: 150px;
+}
