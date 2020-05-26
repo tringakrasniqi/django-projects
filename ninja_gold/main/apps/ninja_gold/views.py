@@ -1,4 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 def index(request):
-      pass
+      if not 'gold' in request.session:
+            request.session['gold'] = 0
+
+      if not 'activity' in request.session:
+            request.session['activity'] = []
+      return render(request, 'index.html')
+
+def process_money(request):
+      request.session['gold'] += 10
+      print(request.POST)
+      return redirect('/')
