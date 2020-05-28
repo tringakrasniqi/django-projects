@@ -46,7 +46,11 @@
             </div>
 
             <div class="activities">
-
+                  {% for i in request.session.activity %}
+                        <p class="{% if i.earned %}green {% endif %} {% if not i.earned %} red {% endif%}">
+                              {{i.text}}
+                        </p>
+                  {% endfor %}  
             </div>
       </div>
 

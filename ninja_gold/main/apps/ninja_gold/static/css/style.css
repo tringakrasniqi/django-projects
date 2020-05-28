@@ -15,3 +15,11 @@ form {
 .activities {
       border: 1px solid gray;
 }
+
+.green  {
+      color: green
+}
+
+.red {
+      color: red
+}
