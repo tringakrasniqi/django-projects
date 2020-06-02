@@ -1,3 +1,9 @@
+"""
+TODO:Refactor your code so the location is being passed in the URL rather than via a form
+TODO:Have the user specify the win conditions before starting, and then implement them in the game (# of moves, goal for gold)
+"""
+
+
 from django.shortcuts import render, redirect
 import random
 from time import strftime, localtime
