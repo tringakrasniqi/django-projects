@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Books & Authors</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'css\style.css' %}">
+</head>
+<body>
+      <div class="container">
+            <h1>{{book.title}}</h1>
+            <h3>ID : {{book.id}}</h3>
+            <h3>Description:</h3>
+            <p>{{book.desc}}</p>
+      </div>
+
+      <div class="container">
+            <h3>Authors:</h3>
+            <ul>
+                  {% for author in book.publishers.all %}
+                  <li>{{author.first_name}} {{author.last_name}}</li>
+                  {% endfor %}
+            </ul>
+      </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Books & Authors</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'css\style.css' %}">
+</head>
+<body>
+      <div class="container">
+            <div class="row">
+                   <div class="col-6">
+                         <h1>Add author</h1>
+                        <form action="/process_author" method="POST">
+                              {% csrf_token %}
+                              <div class="form-group">
+                                    <label for="first_name">First name</label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name">
+                              </div>
+                              <div class="form-group">
+                                    <label for="last_name">Second name</label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name">
+                              </div>
+                              <div class="form-group">
+                                    <label for="note">Notes</label>
+                                    <textarea class="form-control" id="note" rows="3" name="note"></textarea>
+                              </div>
+                              <button class="btn btn-primary">Add</button>
+                        </form>
+                  </div>
+                  <div class="col-6">
+                        <table class="table">
+                              <thead>
+                              <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Title</th>
+                              <th scope="col">Action</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                    {% for author in authors %}
+                                    <tr>
+                                          <td>{{author.id}}</td>
+                                          <td>{{author.first_name}} {{author.last_name}}</td>
+                                          <td><a href="/show_author/{{author.id}}">View</a></td>
+                                    </tr>
+                                    {% endfor %}
+                              
+                              </tbody>
+                        </table>
+                  </div>
+            </div>
+           
+      </div>
+</body>
+</html>
