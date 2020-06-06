@@ -23,5 +23,18 @@
                   {% endfor %}
             </ul>
       </div>
+      <div class="container">
+            <form action="/add_book/author/{{author.id}}" method="POST">
+                  {% csrf_token %}
+                  <label for="books">Add Book:</label>
+      
+                  <select name="new_book" id="books">
+                        {% for book in books %}
+                              <option value="{{book.id}}">{{book.title}}</option>
+                        {% endfor %}
+                  </select>
+                  <button class="btn btn-primary" type="submit">Add Book</button>
+            </form>
+      </div>
 </body>
 </html>

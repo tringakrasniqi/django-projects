@@ -23,6 +23,20 @@
                   <li>{{author.first_name}} {{author.last_name}}</li>
                   {% endfor %}
             </ul>
+
+            <form action="/add_author/book/{{book.id}}" method="POST">
+                  {% csrf_token %}
+                  <label for="authors">Add author:</label>
+      
+                  <select name="new_author" id="authors">
+                        
+                        {% for author in authors %}
+                              <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                        {% endfor %}
+                  </select>
+                  <button class="btn btn-primary" type="submit">Add Author</button>
+            </form>
+
       </div>
 </body>
 </html>

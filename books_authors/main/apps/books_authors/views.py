@@ -12,8 +12,10 @@ def add_book(request):
       return redirect('/')
 
 def show_book(request, book_id):
+      book = Book.objects.get(id=book_id)
       context = {
-            'book' : Book.objects.get(id=book_id)
+            'book' : book,
+            'authors': Author.objects.all()
       }
       return render(request, 'book_details.html', context)
 
@@ -29,6 +31,18 @@ def add_author(request):
 
 def show_author(request, author_id):
       context = {
-            'author': Author.objects.get(id = author_id)
+            'author': Author.objects.get(id = author_id),
+            'books' : Book.objects.all()
       }
       return render(request, 'show_one_author.html', context)
+
+def add_author_book(request, book_id):
+      book =  Book.objects.get(id=book_id)
+      Author.objects.get(id=request.POST['new_author']).books.add(book)
+      return redirect(f'/show_book/{book_id}')
+
+def add_book_to_author(request, author_id):
+      author = Author.objects.get(id = author_id)
+      book = Book.objects.get(id=request.POST['new_book'])
+      author.books.add(book)
+      return redirect(f'/show_author/{author_id}')
