@@ -24,12 +24,11 @@
                               {% csrf_token %}
                               <div class="form-group">
                                     <label for="email">Email address</label>
-                                    <input type="text" class="form-control" id="email" name="email">
+                                    <input type="email" class="form-control" id="email" name="email" required>
                               </div>
                               <div class="form-group">
                                     <label for="password">Password</label>
-                                    {% comment %} change the types {% endcomment %}
-                                    <input type="text" class="form-control" id="password" name="password">
+                                    <input type="password" class="form-control" id="password" name="password" required>
                               </div>
                               <button type="submit" class="btn btn-info">Login</button>
                         </form>
@@ -40,28 +39,28 @@
                               {% csrf_token %}
                               <div class="form-group">
                                     <label for="first_name">First Name</label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name">
+                                    <input type="text" class="form-control" id="first_name" name="first_name" required>
                               </div>
                               <div class="form-group">
                                     <label for="last_name">Last Name</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name">
+                                    <input type="text" class="form-control" id="last_name" name="last_name" required>
                               </div>
                               <div class="form-group">
                                     <label for="bday">Birthday</label>
-                                    <input type="date" class="form-control" id="bday" name="bday">
+                                    <input type="date" class="form-control" id="bday" name="bday" required>
                               </div>
                               <div class="form-group">
                                     <label for="email">Email</label>
                                     {% comment %} CHANGE TYPE {% endcomment %}
-                                    <input type="text" class="form-control" id="email" name="email">
+                                    <input type="email" class="form-control" id="email" name="email" required>
                               </div>
                               <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="text" class="form-control" id="password" name="password">
+                                    <input type="password" class="form-control" id="password" name="password" required>
                               </div>
                               <div class="form-group">
                                     <label for="confirm_password">Confirm pw</label>
-                                    <input type="text" class="form-control" id="confirm_password" name="confirm_password">
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                               </div>
                               <button type="submit" class="btn btn-info">Register</button>
                         </form>
