@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import *
+from datetime import datetime
+from .models import User
 import bcrypt
 
 def index(request):
@@ -29,7 +30,7 @@ def register(request):
             password = request.POST['password']
             pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()  
             print(pw_hash) 
-            user = User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=pw_hash)
+            user = User.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=pw_hash, birthday=datetime.strptime(request.POST['bday'], '%Y-%M-%d'))
             request.session['uid'] = user.id
             return redirect('/success')
 
