@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Login/Registration</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">CodingDojo Wall</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  Wellcome, {{user.first_name}}!
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/logout" method="POST">
+                  {% csrf_token %}
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+      </nav>
+      <div class="container">
+            <div class="row">
+                  <div class="col s12">
+                        <form action="/wall/message/new" method="POST">
+                              {% csrf_token %}
+                              <div class="form-group">
+                                    <label for="message">Post a message:</label>
+                                    <textarea class="form-control" id="message" rows="3" name="message"></textarea>
+                              </div>
+                              <button type="submit" class="btn btn-info">POST</button>
+                        </form>
+                  </div>
+            </div>
+            <div class="row">
+                  <div class="col s12">
+                        <ul class="list-unstyled">
+                              {% for message in all_messages%}
+                                    <li>
+                                          <p><strong>{{message.creator.first_name}} {{message.creator.last_name}}</strong> posted:</p>
+                                          <p>{{message.message}}</p>
+                                          <p><small>{{message.created_at}}</small></p>
+                                          {% if message.creator.id == user.id %}
+                                                <a class="btn btn-danger" href="/wall/message/{{message.id}}/delete">Delete</a>
+                                          {% endif %}
+                                          <ul>
+                                                {% for comment in message.comments.all %}
+                                                      <li>
+                                                            <p><strong>{{comment.creator.first_name}} {{comment.creator.last_name}} </strong> commented: </p>
+                                                            <p>{{comment.comment}}</p>
+                                                            <p><small>{{comment.created_at}}</small></p>
+                                                      </li>
+                                                {% endfor %}
+                                                <li>
+                                                      <form action="/wall/message/{{message.id}}/comment" method="POST">
+                                                            {% csrf_token %}
+                                                            <div class="form-group">
+                                                                  <label for="comment">Leave a comment:</label>
+                                                                  <textarea class="form-control" id="comment" rows="3" name="comment"></textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-info">POST</button>
+                                                      </form>
+                                                </li>
+                                          </ul>
+                                    </li>
+                              {% endfor %}
+                        </ul>
+                  </div>
+            </div>
+      </div>
+</body>
+</html>
